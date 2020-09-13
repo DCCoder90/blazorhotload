@@ -1,0 +1,87 @@
+﻿@page "/"
+@using Component.Common
+@using System.IO
+@using System.Reflection
+@inject IComponentService ComponentService
+
+Components Loaded:
+<ul>
+    @foreach (var comp in ComponentsLoaded)
+    {
+        <li>@comp</li>
+    }
+</ul>
+<button @onclick="LoadComponents">Load Components</button><br><br>
+
+Select Component to Render: 
+<select @onchange="DoStuff">
+    <option value="">N/A</option>
+    @foreach (var comp in ComponentsLoaded)
+    {
+        <option value=@comp>@comp</option>
+    }
+</select>
+
+@if (render)
+{
+    @dynamicComonent()
+}
+
+@code{
+    bool render = false;
+    string componentName;
+    List<string> ComponentsLoaded = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        componentName = String.Empty;
+        ReloadLoadedComponents();
+        base.OnInitialized();
+    }
+
+    void ReloadLoadedComponents()
+    {
+        var comp = ComponentService.Components;
+        var newCompList = new List<string>();
+        foreach (var com in comp)
+            newCompList.Add(((IDynamicComponent)Activator.CreateInstance(com)).Name);
+
+        ComponentsLoaded = newCompList;
+    }
+
+    RenderFragment dynamicComonent() => builder =>
+    {
+        var component = ComponentService.GetComponentByName(componentName);
+        builder.OpenComponent(0,component.Component);
+        
+        for (int i = 0; i < component.Parameters.Count; i++)
+        {
+            var attribute = component.Parameters.ElementAt(i);
+            builder.AddAttribute(i+1,attribute.Key,attribute.Value);
+        }
+        
+        builder.CloseComponent();
+    };
+
+    public void LoadComponents()
+    {
+        ComponentService.LoadComponents(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+        ReloadLoadedComponents();
+    }
+    
+    void DoStuff(ChangeEventArgs e)
+    {
+        var selectedString = e.Value.ToString();
+        if (selectedString != "N/A")
+        {
+            componentName = selectedString;
+            if (ComponentsLoaded.Count == 0) return;
+            render = true;
+            StateHasChanged();
+        }
+        else
+        {
+            render = false;
+        }
+    }
+}

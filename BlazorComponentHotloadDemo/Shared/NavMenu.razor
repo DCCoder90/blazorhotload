@@ -1,0 +1,48 @@
+﻿@using Component.Common
+@inject IComponentService ComponentService
+
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">BlazorComponentHotloadDemo</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        @if (menuItems != null)
+        {
+            foreach (var fragment in menuItems)
+                @fragment;
+        }
+    </ul>
+</div>
+
+@code {
+    IEnumerable<RenderFragment> menuItems;
+    private bool collapseNavMenu = true;
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    protected override void OnInitialized()
+    {
+        var items = ComponentService.GetMenuItems();
+
+        var menulist = new List<RenderFragment>();
+        foreach (var item in items)
+        {
+            menulist.Add(item.GenerateMenuItem());
+        }
+        menuItems = menulist;
+        base.OnInitialized();
+    }
+}

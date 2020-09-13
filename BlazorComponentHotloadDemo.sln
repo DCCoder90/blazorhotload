@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorComponentHotloadDemo", "BlazorComponentHotloadDemo\BlazorComponentHotloadDemo.csproj", "{3ABBD1D8-ED21-4BCF-99D6-636E19143E6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentDemo", "ComponentDemo\ComponentDemo.csproj", "{8D73EF03-8D58-4D2B-AA4C-A0BEAAE5824F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Component.Common", "Component.Common\Component.Common.csproj", "{AFDE0295-2254-4F89-8EE9-AC0D561F1BC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentDemo2", "ComponentDemo2\ComponentDemo2.csproj", "{E4EFBFAC-AC9D-4371-A6C6-8F38B76CDF15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{EF633231-981F-4512-8116-39CDDDDBD182}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A8EC9501-4145-4730-A078-8060CE1900CC}"
+ProjectSection(SolutionItems) = preProject
+	ReadMe.md = ReadMe.md
+	.gitignore = .gitignore
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3ABBD1D8-ED21-4BCF-99D6-636E19143E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABBD1D8-ED21-4BCF-99D6-636E19143E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABBD1D8-ED21-4BCF-99D6-636E19143E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABBD1D8-ED21-4BCF-99D6-636E19143E6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D73EF03-8D58-4D2B-AA4C-A0BEAAE5824F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D73EF03-8D58-4D2B-AA4C-A0BEAAE5824F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D73EF03-8D58-4D2B-AA4C-A0BEAAE5824F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D73EF03-8D58-4D2B-AA4C-A0BEAAE5824F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFDE0295-2254-4F89-8EE9-AC0D561F1BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDE0295-2254-4F89-8EE9-AC0D561F1BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDE0295-2254-4F89-8EE9-AC0D561F1BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDE0295-2254-4F89-8EE9-AC0D561F1BC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4EFBFAC-AC9D-4371-A6C6-8F38B76CDF15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4EFBFAC-AC9D-4371-A6C6-8F38B76CDF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4EFBFAC-AC9D-4371-A6C6-8F38B76CDF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4EFBFAC-AC9D-4371-A6C6-8F38B76CDF15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4EFBFAC-AC9D-4371-A6C6-8F38B76CDF15} = {EF633231-981F-4512-8116-39CDDDDBD182}
+		{8D73EF03-8D58-4D2B-AA4C-A0BEAAE5824F} = {EF633231-981F-4512-8116-39CDDDDBD182}
+	EndGlobalSection
+EndGlobal
