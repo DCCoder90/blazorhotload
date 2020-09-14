@@ -9,6 +9,6 @@ namespace Component.Common
         IDynamicComponent GetComponentByName(string name);
         IDynamicComponent GetComponentByPage(string name);
         IEnumerable<Type> Components { get; }
-        IEnumerable<MenuItem> GetMenuItems();
+        IEnumerable<MenuItem> GetMenuItems(bool getHiddenItems = false);
     }
 }

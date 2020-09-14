@@ -24,9 +24,13 @@ namespace Component.Common
             Components = components;
         }
 
-        public IEnumerable<MenuItem> GetMenuItems()
+        public IEnumerable<MenuItem> GetMenuItems(bool getHiddenItems = false)
         {
-            return Components.Select(x => ((IDynamicComponent) Activator.CreateInstance(x)).MenuData);
+            var components = Components.Select(x => (IDynamicComponent) Activator.CreateInstance(x));
+            if (!getHiddenItems)
+                components = components.Where(x => x.MenuData.Display);
+            
+            return components.Select(x=>x.MenuData);
         }
 
         public IDynamicComponent GetComponentByName(string name)
